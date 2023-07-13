@@ -1,99 +1,63 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link href="/styles/out.css" rel="stylesheet">
-</head>
-<body>
-  
-  <main class="h-screen flex items-center bg-slate-400 flex-col">
-    
-    <h1 class="text-4xl font-bold flex justify-center mt-4">
-      Dart Scoring
-    </h1>
-    <div class="grid grid-cols-3 mt-6 border-2 border-black">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="/styles/out.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.15/dist/tailwind.min.css" rel="stylesheet">
+    <script type="module" src="./js/contadorPersonal.js"></script>
+  </head>
+  <body class="bg-slate-400">
+    <main class="h-screen flex items-center flex-col">
+      
+      <h1 class="text-4xl font-bold flex justify-center mt-4">Dart Scoring</h1>
 
-      <div class="flex flex-col justify-center align-center bg-red-700 border border-black"> 
-         <div class="flex justify-center align-top p-2 py-4 border-b border-black">
-          <p class="flex justify-center align-center">501</p>
-         </div>
-         <div class="flex justify-center align-center p-2 border-t border-black">
-          <p class="flex justify-center align-center">Pepe</p>
-         </div>
+      <div id="player1"></div>
+      <div id="player2"></div>
+
+      <div class="grid grid-cols-7 mt-8 w-80">
+        <div class="flex flex-col w-80 justify-center">
+          <div class="flex flex-row w-80 justify-center">
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">1</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">2</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">3</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">4</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">5</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">6</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">7</div>
+          </div>
+          <div class="flex flex-row justify-center">
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">8</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">9</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">10</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">11</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">12</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">13</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">14</div>
+          </div>
+          <div class="flex flex-row justify-center">
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">15</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">16</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">17</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">18</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">19</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">20</div>
+            <div class="bg-green-700 flex justify-center items-center p-2 w-11">25</div>
+          </div>
+        </div>
       </div>
       
       
-      <div class="bg-gray-200 flex flex-col justify-center align-center border border-black">
-        <div class="flex justify-center align-center bg-blue-600 border-b border-black">
-          <div class="flex justify-center align-center p-3 border-r border-black">
-            <p>0</p>
-          </div>
-          <div class="flex justify-center align-center p-3 border-x border-black">
-            <p>1</p>
-          </div>
-          <div class="flex justify-center align-center p-3 border-l border-black">
-            <p>2</p>
-          </div>
-        </div>
-
-        <div class="flex justify-center align-center p-3 bg-blue-600 border-y border-black">
-          <p>total</p>
-        </div>
-      </div>
-
-
-      <div class="bg-yellow-500 flex flex-col justify-center align-center border border-l-2 border-black">
-        <div class="flex justify-center align-center ">
-          <p>media</p>
-        </div>
-      </div>
-
-    </div>
-
-
-
-
-    <div class="grid grid-cols-3 mt-6 border-2 border-black">
-
-      <div class="flex flex-col justify-center align-center bg-red-700 border border-black"> 
-         <div class="flex justify-center align-top p-2 py-4 border-b border-black">
-          <p class="flex justify-center align-center">501</p>
-         </div>
-         <div class="flex justify-center align-center p-2 border-t border-black">
-          <p class="flex justify-center align-center">Paquito</p>
-         </div>
-      </div>
       
-      
-      <div class="bg-gray-200 flex flex-col justify-center align-center border border-black">
-        <div class="flex justify-center align-center bg-blue-600 border-b border-black">
-          <div class="flex justify-center align-center p-3 border-r border-black">
-            <p>0</p>
-          </div>
-          <div class="flex justify-center align-center p-3 border-x border-black">
-            <p>1</p>
-          </div>
-          <div class="flex justify-center align-center p-3 border-l border-black">
-            <p>2</p>
-          </div>
-        </div>
+    </main>
+  </body>
+  <script type="module">
+    import { contadorPersonal } from "./js/contadorPersonal.js";
 
-        <div class="flex justify-center align-center p-3 bg-blue-600 border-y border-black">
-          <p>total</p>
-        </div>
-      </div>
+    const player1Counter = document.getElementById("player1");
+    const player2Counter = document.getElementById("player2");
 
-
-      <div class="bg-yellow-500 flex flex-col justify-center align-center border border-l-2 border-black">
-        <div class="flex justify-center align-center ">
-          <p>media</p>
-        </div>
-      </div>
-
-    </div>
-
-  </main>
-
-</body>
+    player1Counter.innerHTML = contadorPersonal(501, "Player1");
+    player2Counter.innerHTML = contadorPersonal(501, "Player2");
+  </script>
 </html>
