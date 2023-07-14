@@ -26,7 +26,7 @@ export function contadorPersonal(juego = 501, nombre = "Guest") {
             </div>
         </div>
 
-        <div class="flex justify-center align-center p-3 bg-blue-600 border-y border-black">
+        <div class="flex justify-center align-center p-3 bg-blue-600 border-t border-black">
             <p class="text-xl">total</p>
         </div>
         </div>
