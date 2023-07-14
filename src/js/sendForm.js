@@ -1,24 +1,27 @@
-document.getElementById("myForm").addEventListener("submit", function(event) {
-    event.preventDefault(); // Evita que se envíe el formulario
-  
-    var main = document.getElementById("game");
-    var form = document.getElementById("myForm");
-  
-    main.classList.remove("hidden"); // Muestra el contenido principal
-    form.classList.add("hidden"); // Oculta el formulario
-  
-    // Aquí puedes agregar cualquier lógica adicional que desees realizar después de enviar el formulario
-  
-    // Ejemplo: Obtener los valores de los campos del formulario
-    var points = document.getElementById("points").value;
-    var player1 = document.getElementById("player1").value;
-    var player2 = document.getElementById("player2").value;
-  
-    // Ejemplo: Mostrar los valores en la consola
-    console.log("Número de puntos:", points);
-    console.log("Nombre del jugador 1:", player1);
-    console.log("Nombre del jugador 2:", player2);
-  
-    // Puedes realizar cualquier otra lógica o llamadas a funciones aquí
-  });
-  
+import { show } from "./showGameStats.js";
+
+document.getElementById("myForm").addEventListener("submit", function (event) {
+  event.preventDefault(); // Evita que se envíe el formulario
+
+  let main = document.getElementById("game");
+  let form = document.getElementById("myForm");
+
+  // Obtener los valores del formulario
+  const points = document.getElementById("points").value;
+  const player1 = document.getElementById("player1Form").value;
+  const player2 = document.getElementById("player2Form").value;
+
+  // Guardar los valores en el almacenamiento local
+  localStorage.clear();
+  localStorage.setItem("points", points);
+  localStorage.setItem("player1", player1);
+  localStorage.setItem("player2", player2);
+
+  // Realizar cualquier otra acción que desees con los datos del formulario
+  console.log("Datos del formulario guardados en el almacenamiento local");
+  console.log(localStorage.getItem("points"));
+
+  main.classList.remove("hidden"); // Muestra el contenido principal
+  form.classList.add("hidden"); // Oculta el formulario
+  show();
+});

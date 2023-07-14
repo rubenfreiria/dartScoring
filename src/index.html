@@ -4,37 +4,36 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="/styles/out.css" rel="stylesheet">
-    <script type="module" src="./js/contadorPersonal.js"></script>
+    <link href="/styles/out.css" rel="stylesheet" />
   </head>
   <body class="bg-slate-400">
-    
-
     <form id="myForm" class="flex flex-col items-center mt-8">
       <label for="points" class="text-black">Número de puntos:</label>
-      <input
-        type="number"
+      <select
         id="points"
         name="points"
-        min="1"
-        max="1000"
         required
         class="bg-white text-gray-900 rounded p-2 mt-2"
-      />
+      >
+        <option value="501" selected>501</option>
+        <option value="301">301</option>
+      </select>
 
-      <label for="player1" class="text-black">Nombre del jugador 1:</label>
+      <label for="player1Form" class="text-black">Nombre del jugador 1:</label>
       <input
         type="text"
         id="player1Form"
+        value="guest1"
         required
         class="bg-white text-gray-900 rounded p-2 mt-2"
       />
 
-      <label for="player2" class="text-black">Nombre del jugador 2:</label>
+      <label for="player2Form" class="text-black">Nombre del jugador 2:</label>
       <input
         type="text"
         id="player2Form"
         name="player2"
+        value="guest2"
         required
         class="bg-white text-gray-900 rounded p-2 mt-2"
       />
@@ -47,8 +46,6 @@
       </button>
     </form>
 
-
-
     <main id="game" class="hidden h-screen flex items-center flex-col">
       <h1 class="text-4xl font-bold flex justify-center mt-4">Dart Scoring</h1>
 
@@ -59,11 +56,5 @@
     </main>
 
     <script type="module" src="./js/sendForm.js"></script>
-  <script type="module">
-    import { show } from "./js/show.js";
-
-    show();
-  </script>
   </body>
-
 </html>
