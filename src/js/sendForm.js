@@ -18,8 +18,6 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
   localStorage.setItem("player2", player2);
 
   // Realizar cualquier otra acción que desees con los datos del formulario
-  console.log("Datos del formulario guardados en el almacenamiento local");
-  console.log(localStorage.getItem("points"));
 
   main.classList.remove("hidden"); // Muestra el contenido principal
   form.classList.add("hidden"); // Oculta el formulario
