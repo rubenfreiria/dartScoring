@@ -1,11 +1,12 @@
 /* Funcion que recibe la cantidad e puntos para empezar la partida y el nombre del jugador y devuelve el html con los datos personalizados*/
-export function contadorPersonal(game = 501, nombre = "Guest") {
+export function contadorPersonal(game = 501, nombre = "Guest", id) {
+
     return `
         <div class="grid grid-cols-3 mt-4 border-2 border-black max-w-xm mx-2">
 
         <div class="flex flex-col justify-center align-center bg-red-700 border border-black"> 
         <div class="flex justify-center align-top p-2 py-4 border-b border-black">
-            <p class="flex justify-center align-center text-4xl font-semibold">${game}</p>
+            <p id="counterP${id}" class="flex justify-center align-center text-4xl font-semibold">${game}</p>
         </div>
         <div class="flex justify-center align-center border-t border-black">
             <p class="flex justify-center align-center text-xl">${nombre}</p>
