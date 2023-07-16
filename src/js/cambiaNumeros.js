@@ -1,62 +1,77 @@
-  let divElements = document.getElementsByClassName("flex");
+// Esperar a que el DOM esté completamente cargado
+document.addEventListener('DOMContentLoaded', function() {
+  // Obtener todos los elementos div con el id que comienza con "point-"
+  const pointDivs = document.querySelectorAll('[id^="point-"]');
   let clicksP1 = 0;
   let clicksP2 = 0;
   let currentPlayer = "P1";
-  const tiradasP1 = [];
-  const tiradasP2 = [];
+  let tiradasP1 = [];
+  let tiradasP2 = [];
+  
+  // Iterar sobre los elementos y agregar un controlador de eventos de clic
+  pointDivs.forEach(function(div) {
+    div.addEventListener('click', function() {
+      
+      const especialPulsado = this.textContent.trim();
+      if(especialPulsado === "BACK") {
+        console.log(especialPulsado);
 
+        
+        if (currentPlayer === "P1") {
+          /* Manejar que no se pueda volver mas atras que el inicio de la partida para P1 */
+          if (tiradasP1.length === 0) {
+            currentPlayer = "P1";
+            console.log("No se puede volver mas atras");
+            return;
+          }
+          let counterP1 = document.getElementById("counterP1");
+          let currentValueP1 = parseInt(counterP1.innerText);
+          counterP1.innerText = currentValueP1 + tiradasP1[tiradasP1.length - 1];
+          tiradasP1.pop();
+          clicksP1--;
+          if (clicksP1 % 3 === 0) {
+            currentPlayer = "P2";
+          }
+        } else if (currentPlayer === "P2") {
+          let counterP2 = document.getElementById("counterP2");
+          let currentValueP2 = parseInt(counterP2.innerText);
+          counterP2.innerText = currentValueP2 + tiradasP2[tiradasP2.length - 1];
+          tiradasP2.pop();
+          clicksP2--;
+          if (clicksP2 % 3 === 0) {
+            currentPlayer = "P1";
+          }
+        }
+      }
 
-  for (let i = 0; i < divElements.length; i++) {
-    divElements[i].addEventListener("click", function (event) {
-      let clickedDiv = event.target;
-      let value = parseInt(clickedDiv.getAttribute("value"));
-      if (!isNaN(value)) {
+      const numeroPulsado = parseInt(this.textContent.trim());
+      // Verificar si el contenido es numérico
+      if (!isNaN(numeroPulsado)) {
         let counterP1 = document.getElementById("counterP1");
         let counterP2 = document.getElementById("counterP2");
         let currentValueP1 = parseInt(counterP1.innerText);
         let currentValueP2 = parseInt(counterP2.innerText);
-
-        if (!isNaN(currentValueP1) && !isNaN(currentValueP2)) {
-          if (currentPlayer === "P1") {
-            counterP1.innerText = currentValueP1 - value;
-            tiradasP1.push(value);
-            console.log(tiradasP1);
-            back();
-            clicksP1++;
-            if (clicksP1 % 3 === 0) {
-              currentPlayer = "P2";
-            }
-          } else if (currentPlayer === "P2") {
-            counterP2.innerText = currentValueP2 - value;
-            tiradasP2.push(value);
-            console.log(tiradasP2);
-            clicksP2++;
-            if (clicksP2 % 3 === 0) {
-              currentPlayer = "P1";
-            }
+        
+        if (currentPlayer === "P1") {
+          counterP1.innerText = currentValueP1 - numeroPulsado;
+          tiradasP1.push(numeroPulsado);
+          console.log(tiradasP1);
+          clicksP1++;
+          if (clicksP1 % 3 === 0) {
+            currentPlayer = "P2";
+          }
+        } else if (currentPlayer === "P2") {
+          counterP2.innerText = currentValueP2 - numeroPulsado;
+          clicksP2++;
+          tiradasP2.push(numeroPulsado);
+          console.log(tiradasP2);
+          if (clicksP2 % 3 === 0) {
+            currentPlayer = "P1";
           }
         }
+
+        console.log(numeroPulsado);
       }
     });
-  }
-
-
-function back() {
-  // Obtener el elemento con el id "point-back"
-  const pointBackBtn = document.getElementById("point-back");
-
-  // Agregar un evento click al botón
-  pointBackBtn.addEventListener("click", function () {
-    // Verificar si hay elementos en el array tiradasP1
-    if (tiradasP1.length > 0) {
-      if (clicksP1 > 0) {
-        counterP1.innerText = parseInt(document.getElementById("counterP1").innerText) + tiradasP1[tiradasP1.length - 1];
-        clicksP1--;
-        tiradasP1.pop();
-        console.log("Último elemento eliminado de tiradasP1");
-      }
-    } else {
-      console.log("No hay elementos en tiradasP1");
-    }
   });
-}
+});
