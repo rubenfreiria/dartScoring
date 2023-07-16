@@ -17,13 +17,13 @@ export function contadorPersonal(game = 501, nombre = "Guest", id) {
         <div class="bg-gray-200 flex flex-col justify-center align-center border border-black">
         <div class="flex justify-center align-center bg-blue-600 border-b border-black">
             <div class="flex justify-center align-center px-2 py-3 min-w-[39px] border-r border-black">
-            <p id="dart1-${nombre}" class="text-xl">--</p>
+            <p id="dart1-${id}" class="text-xl">--</p>
             </div>
             <div class="flex justify-center align-center px-2 py-3 min-w-[39px] border-x border-black">
-            <p id="dart2-${nombre}" class="text-xl">--</p>
+            <p id="dart2-${id}" class="text-xl">--</p>
             </div>
             <div class="flex justify-center align-center px-2 py-3 min-w-[39px] border-l border-black">
-            <p id="dart3-${nombre}" class="text-xl">--</p>
+            <p id="dart3-${id}" class="text-xl">--</p>
             </div>
         </div>
 
