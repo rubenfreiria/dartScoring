@@ -16,7 +16,7 @@ document.addEventListener('DOMContentLoaded', function() {
       if(especialPulsado === "BACK") {
         console.log(especialPulsado);
 
-        
+        /* Revisar clicks */
         if (currentPlayer === "P1") {
           /* Manejar que no se pueda volver mas atras que el inicio de la partida para P1 */
           if (tiradasP1.length === 0) {
