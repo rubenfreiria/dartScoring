@@ -4,11 +4,13 @@ document.addEventListener('DOMContentLoaded', function() {
   const pointDivs = document.querySelectorAll('[id^="point-"]');
   let clicksP1 = 0;
   let clicksP2 = 0;
+  let multiplicador = 1;
   let currentPlayer = "P1";
   let tiradasP1 = [];
   let tiradasP2 = [];
   
-  // Iterar sobre los elementos y agregar un controlador de eventos de clic
+  /* Manejo del boton de back */
+  // Iterar sobre los elementos y agregar un controlador de eventos de click
   pointDivs.forEach(function(div) {
     div.addEventListener('click', function() {
       
@@ -56,26 +58,39 @@ document.addEventListener('DOMContentLoaded', function() {
         }
       }
 
+      /* Manejo de los multiplicadores */
+      if(especialPulsado === "DOUBLE") {
+        multiplicador = 2;
+      }
+
+      if(especialPulsado === "TRIPLE") {
+        multiplicador = 3;
+      }
+
+      /* Manejo de la resta de numeros */
       const numeroPulsado = parseInt(this.textContent.trim());
       // Verificar si el contenido es numérico
       if (!isNaN(numeroPulsado)) {
         let counterP1 = document.getElementById("counterP1");
         let counterP2 = document.getElementById("counterP2");
+
         let currentValueP1 = parseInt(counterP1.innerText);
         let currentValueP2 = parseInt(counterP2.innerText);
         
         if (currentPlayer === "P1") {
-          counterP1.innerText = currentValueP1 - numeroPulsado;
-          tiradasP1.push(numeroPulsado);
+          counterP1.innerText = currentValueP1 - numeroPulsado * multiplicador;
+          tiradasP1.push(numeroPulsado * multiplicador);
+          multiplicador = 1;
           console.log(tiradasP1);
           clicksP1++;
           if (clicksP1 % 3 === 0) {
             currentPlayer = "P2";
           }
         } else if (currentPlayer === "P2") {
-          counterP2.innerText = currentValueP2 - numeroPulsado;
+          counterP2.innerText = currentValueP2 - numeroPulsado * multiplicador;
           clicksP2++;
-          tiradasP2.push(numeroPulsado);
+          tiradasP2.push(numeroPulsado * multiplicador);
+          multiplicador = 1;
           console.log(tiradasP2);
           if (clicksP2 % 3 === 0) {
             currentPlayer = "P1";
