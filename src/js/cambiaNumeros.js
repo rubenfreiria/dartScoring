@@ -1,5 +1,5 @@
 // Esperar a que el DOM esté completamente cargado
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener("DOMContentLoaded", function () {
   // Obtener todos los elementos div con el id que comienza con "point-"
   const pointDivs = document.querySelectorAll('[id^="point-"]');
   let clicksP1 = 0;
@@ -8,14 +8,13 @@ document.addEventListener('DOMContentLoaded', function() {
   let currentPlayer = "P1";
   let tiradasP1 = [];
   let tiradasP2 = [];
-  
+
   /* Manejo del boton de back */
   // Iterar sobre los elementos y agregar un controlador de eventos de click
-  pointDivs.forEach(function(div) {
-    div.addEventListener('click', function() {
-      
+  pointDivs.forEach(function (div) {
+    div.addEventListener("click", function () {
       const especialPulsado = this.textContent.trim();
-      if(especialPulsado === "BACK") {
+      if (especialPulsado === "BACK") {
         console.log(especialPulsado);
 
         /* Revisar clicks */
@@ -30,14 +29,16 @@ document.addEventListener('DOMContentLoaded', function() {
             currentPlayer = "P2";
             let counterP2 = document.getElementById("counterP2");
             let currentValueP2 = parseInt(counterP2.innerText);
-            counterP2.innerText = currentValueP2 + tiradasP2[tiradasP2.length - 1];
+            counterP2.innerText =
+              currentValueP2 + tiradasP2[tiradasP2.length - 1];
             tiradasP2.pop();
             clicksP2--;
             return;
           }
           let counterP1 = document.getElementById("counterP1");
           let currentValueP1 = parseInt(counterP1.innerText);
-          counterP1.innerText = currentValueP1 + tiradasP1[tiradasP1.length - 1];
+          counterP1.innerText =
+            currentValueP1 + tiradasP1[tiradasP1.length - 1];
           tiradasP1.pop();
           clicksP1--;
         } else if (currentPlayer === "P2") {
@@ -45,25 +46,27 @@ document.addEventListener('DOMContentLoaded', function() {
             currentPlayer = "P1";
             let counterP1 = document.getElementById("counterP1");
             let currentValueP1 = parseInt(counterP1.innerText);
-            counterP1.innerText = currentValueP1 + tiradasP1[tiradasP1.length - 1];
+            counterP1.innerText =
+              currentValueP1 + tiradasP1[tiradasP1.length - 1];
             tiradasP1.pop();
             clicksP1--;
             return;
           }
           let counterP2 = document.getElementById("counterP2");
           let currentValueP2 = parseInt(counterP2.innerText);
-          counterP2.innerText = currentValueP2 + tiradasP2[tiradasP2.length - 1];
+          counterP2.innerText =
+            currentValueP2 + tiradasP2[tiradasP2.length - 1];
           tiradasP2.pop();
           clicksP2--;
         }
       }
 
       /* Manejo de los multiplicadores */
-      if(especialPulsado === "DOUBLE") {
+      if (especialPulsado === "DOUBLE") {
         multiplicador = 2;
       }
 
-      if(especialPulsado === "TRIPLE") {
+      if (especialPulsado === "TRIPLE") {
         multiplicador = 3;
       }
 
@@ -76,27 +79,78 @@ document.addEventListener('DOMContentLoaded', function() {
 
         let currentValueP1 = parseInt(counterP1.innerText);
         let currentValueP2 = parseInt(counterP2.innerText);
-        
+
         if (currentPlayer === "P1") {
-          counterP1.innerText = currentValueP1 - numeroPulsado * multiplicador;
-          tiradasP1.push(numeroPulsado * multiplicador);
-          multiplicador = 1;
-          console.log(tiradasP1);
-          clicksP1++;
-          if (clicksP1 % 3 === 0) {
-            currentPlayer = "P2";
+          if (numeroPulsado !== 25) {
+            counterP1.innerText =
+              currentValueP1 - numeroPulsado * multiplicador;
+            tiradasP1.push(numeroPulsado * multiplicador);
+            multiplicador = 1;
+            console.log(tiradasP1);
+            clicksP1++;
+            if (clicksP1 % 3 === 0) {
+              currentPlayer = "P2";
+            }
+          } else {
+            //Caso en el que el numero pulsado es 25 y el multiplicador es 1 o 2
+            if (multiplicador === 1 || multiplicador === 2) {
+              counterP1.innerText =
+                currentValueP1 - numeroPulsado * multiplicador;
+              tiradasP1.push(numeroPulsado * multiplicador);
+              multiplicador = 1;
+              console.log(tiradasP1);
+              clicksP1++;
+              if (clicksP1 % 3 === 0) {
+                currentPlayer = "P2";
+              }
+            } else {
+              //Caso en el que el multiplicador es 3
+              counterP1.innerText = currentValueP1 - numeroPulsado;
+              tiradasP1.push(numeroPulsado);
+              multiplicador = 1;
+              console.log(tiradasP1);
+              clicksP1++;
+              if (clicksP1 % 3 === 0) {
+                currentPlayer = "P2";
+              }
+            }
           }
         } else if (currentPlayer === "P2") {
-          counterP2.innerText = currentValueP2 - numeroPulsado * multiplicador;
-          clicksP2++;
-          tiradasP2.push(numeroPulsado * multiplicador);
-          multiplicador = 1;
-          console.log(tiradasP2);
-          if (clicksP2 % 3 === 0) {
-            currentPlayer = "P1";
+          if (numeroPulsado !== 25) {
+            counterP2.innerText =
+              currentValueP2 - numeroPulsado * multiplicador;
+            clicksP2++;
+            tiradasP2.push(numeroPulsado * multiplicador);
+            multiplicador = 1;
+            console.log(tiradasP2);
+            if (clicksP2 % 3 === 0) {
+              currentPlayer = "P1";
+            }
+          } else {
+            //Caso en el que el numero pulsado es 25 y el multiplicador es 1 o 2
+            if (multiplicador === 1 || multiplicador === 2) {
+              counterP2.innerText =
+                currentValueP2 - numeroPulsado * multiplicador;
+              clicksP2++;
+              tiradasP2.push(numeroPulsado * multiplicador);
+              multiplicador = 1;
+              console.log(tiradasP2);
+              if (clicksP2 % 3 === 0) {
+                currentPlayer = "P1";
+              }
+            } else {
+              //Caso en el que el multiplicador es 3
+              counterP2.innerText = currentValueP2 - numeroPulsado;
+              clicksP2++;
+              tiradasP2.push(numeroPulsado);
+              multiplicador = 1;
+              console.log(tiradasP2);
+              if (clicksP2 % 3 === 0) {
+                currentPlayer = "P1";
+              }
+            }
           }
         }
-
         console.log(numeroPulsado);
       }
     });
