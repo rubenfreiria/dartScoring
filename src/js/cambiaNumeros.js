@@ -24,23 +24,35 @@ document.addEventListener('DOMContentLoaded', function() {
             console.log("No se puede volver mas atras");
             return;
           }
+          if (clicksP1 % 3 === 0 && tiradasP2.length > 0) {
+            currentPlayer = "P2";
+            let counterP2 = document.getElementById("counterP2");
+            let currentValueP2 = parseInt(counterP2.innerText);
+            counterP2.innerText = currentValueP2 + tiradasP2[tiradasP2.length - 1];
+            tiradasP2.pop();
+            clicksP2--;
+            return;
+          }
           let counterP1 = document.getElementById("counterP1");
           let currentValueP1 = parseInt(counterP1.innerText);
           counterP1.innerText = currentValueP1 + tiradasP1[tiradasP1.length - 1];
           tiradasP1.pop();
           clicksP1--;
-          if (clicksP1 % 3 === 0) {
-            currentPlayer = "P2";
-          }
         } else if (currentPlayer === "P2") {
+          if (clicksP2 % 3 === 0 && tiradasP1.length > 0) {
+            currentPlayer = "P1";
+            let counterP1 = document.getElementById("counterP1");
+            let currentValueP1 = parseInt(counterP1.innerText);
+            counterP1.innerText = currentValueP1 + tiradasP1[tiradasP1.length - 1];
+            tiradasP1.pop();
+            clicksP1--;
+            return;
+          }
           let counterP2 = document.getElementById("counterP2");
           let currentValueP2 = parseInt(counterP2.innerText);
           counterP2.innerText = currentValueP2 + tiradasP2[tiradasP2.length - 1];
           tiradasP2.pop();
           clicksP2--;
-          if (clicksP2 % 3 === 0) {
-            currentPlayer = "P1";
-          }
         }
       }
 
