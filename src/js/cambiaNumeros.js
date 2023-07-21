@@ -27,6 +27,11 @@ document.addEventListener("DOMContentLoaded", function () {
           }
           if (clicksP1 % 3 === 0 && tiradasP2.length > 0) {
             clicksP2 = 3;
+            document.getElementById("P2Name").classList.add("font-semibold");
+            document.getElementById("P1Name").classList.remove("font-semibold");
+            document.getElementById("dart3-P1").innerText = tiradasP1[tiradasP1.length - 1];
+            document.getElementById("dart2-P1").innerText = tiradasP1[tiradasP1.length - 2];
+            document.getElementById("dart1-P1").innerText = tiradasP1[tiradasP1.length - 3];
             currentPlayer = "P2";
             let counterP2 = document.getElementById("counterP2");
             let currentValueP2 = parseInt(counterP2.innerText);
@@ -47,6 +52,13 @@ document.addEventListener("DOMContentLoaded", function () {
         } else if (currentPlayer === "P2") {
           if (clicksP2 % 3 === 0 && tiradasP1.length > 0) {
             clicksP1 = 3;
+            document.getElementById("P1Name").classList.add("font-semibold");
+            document.getElementById("P2Name").classList.remove("font-semibold");
+            if (tiradasP2.length > 0) {  
+              document.getElementById("dart3-P2").innerText = tiradasP2[tiradasP2.length - 1];
+              document.getElementById("dart2-P2").innerText = tiradasP2[tiradasP2.length - 2];
+              document.getElementById("dart1-P2").innerText = tiradasP2[tiradasP2.length - 3];
+            }
             currentPlayer = "P1";
             let counterP1 = document.getElementById("counterP1");
             let currentValueP1 = parseInt(counterP1.innerText);
@@ -90,6 +102,13 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentValueP2 = parseInt(counterP2.innerText);
 
         if (currentPlayer === "P1") {
+          document.getElementById("P1Name").classList.add("font-semibold");
+          document.getElementById("P2Name").classList.remove("font-semibold");
+          if (clicksP1 === 0) {
+            document.getElementById("dart1-P1").innerText = "--";
+            document.getElementById("dart2-P1").innerText = "--";
+            document.getElementById("dart3-P1").innerText = "--";
+          }
           if (numeroPulsado !== 25) {
             counterP1.innerText =
               currentValueP1 - numeroPulsado * multiplicador;
@@ -132,6 +151,14 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         } else if (currentPlayer === "P2") {
+          document.getElementById("P2Name").classList.add("font-semibold");
+          document.getElementById("P1Name").classList.remove("font-semibold");
+
+          if (clicksP2 === 0) {
+            document.getElementById("dart1-P2").innerText = "--";
+            document.getElementById("dart2-P2").innerText = "--";
+            document.getElementById("dart3-P2").innerText = "--";
+          }
           if (numeroPulsado !== 25) {
             counterP2.innerText =
               currentValueP2 - numeroPulsado * multiplicador;
