@@ -26,6 +26,7 @@ document.addEventListener("DOMContentLoaded", function () {
             return;
           }
           if (clicksP1 % 3 === 0 && tiradasP2.length > 0) {
+            clicksP2 = 3;
             currentPlayer = "P2";
             let counterP2 = document.getElementById("counterP2");
             let currentValueP2 = parseInt(counterP2.innerText);
@@ -33,31 +34,36 @@ document.addEventListener("DOMContentLoaded", function () {
               currentValueP2 + tiradasP2[tiradasP2.length - 1];
             tiradasP2.pop();
             clicksP2--;
+            document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
             return;
           }
           let counterP1 = document.getElementById("counterP1");
           let currentValueP1 = parseInt(counterP1.innerText);
           counterP1.innerText =
             currentValueP1 + tiradasP1[tiradasP1.length - 1];
-          tiradasP1.pop();
-          clicksP1--;
+            tiradasP1.pop();
+            clicksP1--;
+            document.getElementById(`dart${clicksP1 + 1}-P1`).innerText = "--";
         } else if (currentPlayer === "P2") {
           if (clicksP2 % 3 === 0 && tiradasP1.length > 0) {
+            clicksP1 = 3;
             currentPlayer = "P1";
             let counterP1 = document.getElementById("counterP1");
             let currentValueP1 = parseInt(counterP1.innerText);
             counterP1.innerText =
               currentValueP1 + tiradasP1[tiradasP1.length - 1];
-            tiradasP1.pop();
-            clicksP1--;
+              tiradasP1.pop();
+              document.getElementById(`dart${clicksP1}-P1`).innerText = "--";
+              clicksP1--;
             return;
           }
           let counterP2 = document.getElementById("counterP2");
           let currentValueP2 = parseInt(counterP2.innerText);
           counterP2.innerText =
             currentValueP2 + tiradasP2[tiradasP2.length - 1];
-          tiradasP2.pop();
-          clicksP2--;
+            tiradasP2.pop();
+            clicksP2--;
+            document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
         }
       }
 
@@ -77,6 +83,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let counterP1 = document.getElementById("counterP1");
         let counterP2 = document.getElementById("counterP2");
 
+        let currentDartP1 = document.getElementById(`dart${clicksP1 + 1}-P1`);
+        let currentDartP2 = document.getElementById(`dart${clicksP2 + 1}-P2`);
+
         let currentValueP1 = parseInt(counterP1.innerText);
         let currentValueP2 = parseInt(counterP2.innerText);
 
@@ -85,10 +94,12 @@ document.addEventListener("DOMContentLoaded", function () {
             counterP1.innerText =
               currentValueP1 - numeroPulsado * multiplicador;
             tiradasP1.push(numeroPulsado * multiplicador);
+            currentDartP1.innerText = numeroPulsado * multiplicador;
             multiplicador = 1;
             console.log(tiradasP1);
             clicksP1++;
             if (clicksP1 % 3 === 0) {
+              clicksP1 = 0;
               currentPlayer = "P2";
             }
           } else {
@@ -97,20 +108,25 @@ document.addEventListener("DOMContentLoaded", function () {
               counterP1.innerText =
                 currentValueP1 - numeroPulsado * multiplicador;
               tiradasP1.push(numeroPulsado * multiplicador);
+              currentDartP1.innerText = numeroPulsado * multiplicador;
               multiplicador = 1;
               console.log(tiradasP1);
               clicksP1++;
               if (clicksP1 % 3 === 0) {
+                clicksP1 = 0;
                 currentPlayer = "P2";
               }
             } else {
               //Caso en el que el multiplicador es 3
               counterP1.innerText = currentValueP1 - numeroPulsado;
               tiradasP1.push(numeroPulsado);
+              currentDartP1.innerText = numeroPulsado;
               multiplicador = 1;
+              
               console.log(tiradasP1);
               clicksP1++;
               if (clicksP1 % 3 === 0) {
+                clicksP1 = 0;
                 currentPlayer = "P2";
               }
             }
@@ -121,9 +137,11 @@ document.addEventListener("DOMContentLoaded", function () {
               currentValueP2 - numeroPulsado * multiplicador;
             clicksP2++;
             tiradasP2.push(numeroPulsado * multiplicador);
+            currentDartP2.innerText = numeroPulsado * multiplicador;
             multiplicador = 1;
             console.log(tiradasP2);
             if (clicksP2 % 3 === 0) {
+              clicksP2 = 0;
               currentPlayer = "P1";
             }
           } else {
@@ -133,9 +151,11 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentValueP2 - numeroPulsado * multiplicador;
               clicksP2++;
               tiradasP2.push(numeroPulsado * multiplicador);
+              currentDartP2.innerText = numeroPulsado * multiplicador;
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {
+                clicksP2 = 0;
                 currentPlayer = "P1";
               }
             } else {
@@ -143,9 +163,11 @@ document.addEventListener("DOMContentLoaded", function () {
               counterP2.innerText = currentValueP2 - numeroPulsado;
               clicksP2++;
               tiradasP2.push(numeroPulsado);
+              currentDartP2.innerText = numeroPulsado * multiplicador;
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {
+                clicksP2 = 0;
                 currentPlayer = "P1";
               }
             }
