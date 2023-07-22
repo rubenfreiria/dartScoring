@@ -141,7 +141,6 @@ document.addEventListener("DOMContentLoaded", function () {
               tiradasP1.push(numeroPulsado);
               currentDartP1.innerText = numeroPulsado;
               multiplicador = 1;
-              
               console.log(tiradasP1);
               clicksP1++;
               if (clicksP1 % 3 === 0) {
@@ -190,7 +189,7 @@ document.addEventListener("DOMContentLoaded", function () {
               counterP2.innerText = currentValueP2 - numeroPulsado;
               clicksP2++;
               tiradasP2.push(numeroPulsado);
-              currentDartP2.innerText = numeroPulsado * multiplicador;
+              currentDartP2.innerText = numeroPulsado;
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {
