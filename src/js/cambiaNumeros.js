@@ -9,6 +9,21 @@ document.addEventListener("DOMContentLoaded", function () {
   let tiradasP1 = [];
   let tiradasP2 = [];
 
+  function calcAverage(array, averageForm = localStorage.getItem("averageForm")) {
+    if (array.length === 0) {
+      return 0;
+    }
+
+    const total = array.reduce((acc, c) => acc + c);
+    const media = (total / array.length);
+
+    if (averageForm === "MPR") {
+      return (media*3).toFixed(2);
+    } else if (averageForm === "PPD") {
+      return media.toFixed(2);
+    }
+  }
+
   /* Manejo del boton de back */
   // Iterar sobre los elementos y agregar un controlador de eventos de click
   pointDivs.forEach(function (div) {
@@ -98,6 +113,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentDartP1 = document.getElementById(`dart${clicksP1 + 1}-P1`);
         let currentDartP2 = document.getElementById(`dart${clicksP2 + 1}-P2`);
 
+        let totalAverageP1 = document.getElementById("totalAverageP1");
+        let totalAverageP2 = document.getElementById("totalAverageP2");
+
         let currentValueP1 = parseInt(counterP1.innerText);
         let currentValueP2 = parseInt(counterP2.innerText);
 
@@ -114,6 +132,7 @@ document.addEventListener("DOMContentLoaded", function () {
               currentValueP1 - numeroPulsado * multiplicador;
             tiradasP1.push(numeroPulsado * multiplicador);
             currentDartP1.innerText = numeroPulsado * multiplicador;
+            totalAverageP1.innerText = calcAverage(tiradasP1);
             multiplicador = 1;
             console.log(tiradasP1);
             clicksP1++;
@@ -128,6 +147,7 @@ document.addEventListener("DOMContentLoaded", function () {
                 currentValueP1 - numeroPulsado * multiplicador;
               tiradasP1.push(numeroPulsado * multiplicador);
               currentDartP1.innerText = numeroPulsado * multiplicador;
+              totalAverageP1.innerText = calcAverage(tiradasP1);
               multiplicador = 1;
               console.log(tiradasP1);
               clicksP1++;
@@ -140,6 +160,7 @@ document.addEventListener("DOMContentLoaded", function () {
               counterP1.innerText = currentValueP1 - numeroPulsado;
               tiradasP1.push(numeroPulsado);
               currentDartP1.innerText = numeroPulsado;
+              totalAverageP1.innerText = calcAverage(tiradasP1);
               multiplicador = 1;
               console.log(tiradasP1);
               clicksP1++;
@@ -164,6 +185,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clicksP2++;
             tiradasP2.push(numeroPulsado * multiplicador);
             currentDartP2.innerText = numeroPulsado * multiplicador;
+            totalAverageP2.innerText = calcAverage(tiradasP2);
             multiplicador = 1;
             console.log(tiradasP2);
             if (clicksP2 % 3 === 0) {
@@ -178,6 +200,7 @@ document.addEventListener("DOMContentLoaded", function () {
               clicksP2++;
               tiradasP2.push(numeroPulsado * multiplicador);
               currentDartP2.innerText = numeroPulsado * multiplicador;
+              totalAverageP2.innerText = calcAverage(tiradasP2);
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {
@@ -190,6 +213,7 @@ document.addEventListener("DOMContentLoaded", function () {
               clicksP2++;
               tiradasP2.push(numeroPulsado);
               currentDartP2.innerText = numeroPulsado;
+              totalAverageP2.innerText = calcAverage(tiradasP2);
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {

@@ -8,12 +8,14 @@ document.getElementById("myForm").addEventListener("submit", function (event) {
 
   // Obtener los valores del formulario
   const points = document.getElementById("points").value;
+  const averageForm = document.getElementById("averageForm").value;
   const player1 = document.getElementById("player1Form").value;
   const player2 = document.getElementById("player2Form").value;
 
   // Guardar los valores en el almacenamiento local
   localStorage.clear();
   localStorage.setItem("points", points);
+  localStorage.setItem("averageForm", averageForm);
   localStorage.setItem("player1", player1);
   localStorage.setItem("player2", player2);
 
