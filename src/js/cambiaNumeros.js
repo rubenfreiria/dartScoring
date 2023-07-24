@@ -24,6 +24,28 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function calcRound(player) {
+    const d1 = document.getElementById(`dart1-${player}`);
+    const d2 = document.getElementById(`dart2-${player}`);
+    const d3 = document.getElementById(`dart3-${player}`);
+
+    if (d1.innerText === "--" && d2.innerText === "--" && d3.innerText === "--") {
+      return "--";
+    }
+
+    if (d1.innerText !== "--" && d2.innerText !== "--" && d3.innerText !== "--") {
+      return parseInt(d1.innerText) + parseInt(d2.innerText) + parseInt(d3.innerText);
+    }
+
+    if (d1.innerText !== "--" && d2.innerText !== "--") {
+      return parseInt(d1.innerText) + parseInt(d2.innerText);
+    }
+
+    if (d1.innerText !== "--") {
+      return parseInt(d1.innerText);
+    }
+  }
+
   /* Manejo del boton de back */
   // Iterar sobre los elementos y agregar un controlador de eventos de click
   pointDivs.forEach(function (div) {
@@ -56,6 +78,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clicksP2--;
             document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
             totalAverageP2.innerText = calcAverage(tiradasP2);
+            partialAverageP2.innerText = calcRound("P2");
             return;
           }
           let counterP1 = document.getElementById("counterP1");
@@ -66,6 +89,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clicksP1--;
             document.getElementById(`dart${clicksP1 + 1}-P1`).innerText = "--";
             totalAverageP1.innerText = calcAverage(tiradasP1);
+            partialAverageP1.innerText = calcRound("P1");
         } else if (currentPlayer === "P2") {
           if (clicksP2 % 3 === 0 && tiradasP1.length > 0) {
             clicksP1 = 3;
@@ -85,6 +109,7 @@ document.addEventListener("DOMContentLoaded", function () {
               document.getElementById(`dart${clicksP1}-P1`).innerText = "--";
               clicksP1--;
               totalAverageP1.innerText = calcAverage(tiradasP1);
+              partialAverageP1.innerText = calcRound("P1");
             return;
           }
           let counterP2 = document.getElementById("counterP2");
@@ -95,6 +120,7 @@ document.addEventListener("DOMContentLoaded", function () {
             clicksP2--;
             document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
             totalAverageP2.innerText = calcAverage(tiradasP2);
+            partialAverageP2.innerText = calcRound("P2");
         }
       }
 
@@ -120,6 +146,9 @@ document.addEventListener("DOMContentLoaded", function () {
         let totalAverageP1 = document.getElementById("totalAverageP1");
         let totalAverageP2 = document.getElementById("totalAverageP2");
 
+        let partialAverageP1 = document.getElementById("partialAverageP1");
+        let partialAverageP2 = document.getElementById("partialAverageP2");
+
         let currentValueP1 = parseInt(counterP1.innerText);
         let currentValueP2 = parseInt(counterP2.innerText);
 
@@ -137,6 +166,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tiradasP1.push(numeroPulsado * multiplicador);
             currentDartP1.innerText = numeroPulsado * multiplicador;
             totalAverageP1.innerText = calcAverage(tiradasP1);
+            partialAverageP1.innerText = calcRound("P1");
             multiplicador = 1;
             console.log(tiradasP1);
             clicksP1++;
@@ -152,6 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tiradasP1.push(numeroPulsado * multiplicador);
               currentDartP1.innerText = numeroPulsado * multiplicador;
               totalAverageP1.innerText = calcAverage(tiradasP1);
+              partialAverageP1.innerText = calcRound("P1");
               multiplicador = 1;
               console.log(tiradasP1);
               clicksP1++;
@@ -165,6 +196,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tiradasP1.push(numeroPulsado);
               currentDartP1.innerText = numeroPulsado;
               totalAverageP1.innerText = calcAverage(tiradasP1);
+              partialAverageP1.innerText = calcRound("P1");
               multiplicador = 1;
               console.log(tiradasP1);
               clicksP1++;
@@ -190,6 +222,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tiradasP2.push(numeroPulsado * multiplicador);
             currentDartP2.innerText = numeroPulsado * multiplicador;
             totalAverageP2.innerText = calcAverage(tiradasP2);
+            partialAverageP2.innerText = calcRound("P2");
             multiplicador = 1;
             console.log(tiradasP2);
             if (clicksP2 % 3 === 0) {
@@ -205,6 +238,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tiradasP2.push(numeroPulsado * multiplicador);
               currentDartP2.innerText = numeroPulsado * multiplicador;
               totalAverageP2.innerText = calcAverage(tiradasP2);
+              partialAverageP2.innerText = calcRound("P2");
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {
@@ -218,6 +252,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tiradasP2.push(numeroPulsado);
               currentDartP2.innerText = numeroPulsado;
               totalAverageP2.innerText = calcAverage(tiradasP2);
+              partialAverageP2.innerText = calcRound("P2");
               multiplicador = 1;
               console.log(tiradasP2);
               if (clicksP2 % 3 === 0) {
