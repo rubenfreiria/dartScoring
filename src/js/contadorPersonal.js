@@ -35,7 +35,7 @@ export function contadorPersonal(game = 501, nombre = "Guest", id) {
 
         <div class="bg-yellow-500 flex flex-col justify-center items-center border border-l-2 border-black">
         <div class="flex justify-center align-center flex-col">
-            <p class="flex justify-center items-center text-xl">MEDIA</p>
+            <p id="mediaTextP${id}" class="flex justify-center items-center text-xl">MEDIA</p>
             <p id="totalAverageP${id}" class="flex justify-center items-center text-2xl">-</p>
         </div>
         </div>

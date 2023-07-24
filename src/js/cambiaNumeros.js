@@ -9,6 +9,7 @@ document.addEventListener("DOMContentLoaded", function () {
   let tiradasP1 = [];
   let tiradasP2 = [];
 
+  // Funcion para calcular la media total
   function calcAverage(array, averageForm = localStorage.getItem("averageForm")) {
     if (array.length === 0) {
       return "--";
@@ -24,6 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  // Funcion para calcular la media de la ronda
   function calcRound(player) {
     const d1 = document.getElementById(`dart1-${player}`);
     const d2 = document.getElementById(`dart2-${player}`);
