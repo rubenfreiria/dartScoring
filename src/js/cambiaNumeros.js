@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   function calcAverage(array, averageForm = localStorage.getItem("averageForm")) {
     if (array.length === 0) {
-      return 0;
+      return "--";
     }
 
     const total = array.reduce((acc, c) => acc + c);
@@ -55,6 +55,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tiradasP2.pop();
             clicksP2--;
             document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
+            totalAverageP2.innerText = calcAverage(tiradasP2);
             return;
           }
           let counterP1 = document.getElementById("counterP1");
@@ -64,6 +65,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tiradasP1.pop();
             clicksP1--;
             document.getElementById(`dart${clicksP1 + 1}-P1`).innerText = "--";
+            totalAverageP1.innerText = calcAverage(tiradasP1);
         } else if (currentPlayer === "P2") {
           if (clicksP2 % 3 === 0 && tiradasP1.length > 0) {
             clicksP1 = 3;
@@ -82,6 +84,7 @@ document.addEventListener("DOMContentLoaded", function () {
               tiradasP1.pop();
               document.getElementById(`dart${clicksP1}-P1`).innerText = "--";
               clicksP1--;
+              totalAverageP1.innerText = calcAverage(tiradasP1);
             return;
           }
           let counterP2 = document.getElementById("counterP2");
@@ -91,6 +94,7 @@ document.addEventListener("DOMContentLoaded", function () {
             tiradasP2.pop();
             clicksP2--;
             document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
+            totalAverageP2.innerText = calcAverage(tiradasP2);
         }
       }
 
