@@ -9,7 +9,7 @@ export function contadorPersonal(game = 501, nombre = "Guest", id, color) {
             <p id="counterP${id}" class="flex justify-center align-center text-4xl font-semibold">${game}</p>
         </div>
         <div class="flex justify-center align-center border-t border-black">
-            <p id="P${id}Name" class="flex justify-center align-center text-xl">${nombre}</p>
+            <p id="P${id}Name" class="flex justify-center align-center text-base">${nombre}</p>
         </div>
         </div>
         

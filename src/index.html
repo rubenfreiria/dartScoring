@@ -5,61 +5,74 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="/styles/out.css" rel="stylesheet" />
-    <link rel="shortcut icon" href="img/favicon.svg" type="image/x-icon">
+    <link rel="shortcut icon" href="img/favicon.svg" type="image/x-icon" />
     <title>Dart Scoring</title>
-    <meta name="description" content="Online dart scoring app">
-    <meta name="keywords" content="darts, play darts, online darts, dart, 501">
+    <meta name="description" content="Online dart scoring app" />
+    <meta
+      name="keywords"
+      content="darts, play darts, online darts, dart, 501"
+    />
   </head>
   <body class="bg-slate-300">
-    <form id="myForm" class="flex flex-col items-center mt-8">
-      <label for="points" class="text-black">Número de puntos:</label>
-      <select
-        id="points"
-        name="points"
-        required
-        class="bg-white text-gray-900 rounded p-2 mt-2"
-      >
-        <option value="501" selected>501</option>
-        <option value="301">301</option>
-      </select>
+    <div id="myForm" class="flex items-center justify-center mt-8">
+      <div class=" bg-slate-400 w-80 h-[420px] rounded-xl shadow-black shadow-sm">
+        <form class="flex flex-col items-center mt-6">
+          <label for="player1Form" class="text-black mb-1"
+            >Player 1:</label
+          >
+          <input
+            type="text"
+            id="player1Form"
+            value="Guest1"
+            required
+            maxlength="8"
+            class="bg-white text-gray-900 rounded p-2 m-1 mb-1 w-44 text-center"
+          />
 
-      <label for="averageForm" class="text-black">Tipo de media:</label>
-      <select
-        id="averageForm"
-        name="averageForm"
-        required
-        class="bg-white text-gray-900 rounded p-2 mt-2"
-      >
-        <option value="MPR" selected>MPR</option>
-        <option value="PPD">PPD</option>
-      </select>
+          <label for="player2Form" class="text-black m-1"
+            >Player 2:</label
+          >
+          <input
+            type="text"
+            id="player2Form"
+            name="player2"
+            value="Guest2"
+            required
+            maxlength="8"
+            class="bg-white text-gray-900 rounded p-2 m1 mb-1 w-44 text-center"
+          />
 
-      <label for="player1Form" class="text-black">Nombre del jugador 1:</label>
-      <input
-        type="text"
-        id="player1Form"
-        value="guest1"
-        required
-        class="bg-white text-gray-900 rounded p-2 mt-2"
-      />
+          <label for="points" class="text-black m-1">Game:</label>
+          <select
+            id="points"
+            name="points"
+            required
+            class="bg-white text-gray-900 rounded p-2 m-1 mb-1"
+          >
+            <option value="501" selected>501</option>
+            <option value="301">301</option>
+          </select>
 
-      <label for="player2Form" class="text-black">Nombre del jugador 2:</label>
-      <input
-        type="text"
-        id="player2Form"
-        name="player2"
-        value="guest2"
-        required
-        class="bg-white text-gray-900 rounded p-2 mt-2"
-      />
+          <label for="averageForm" class="text-black m-1">Average:</label>
+          <select
+            id="averageForm"
+            name="averageForm"
+            required
+            class="bg-white text-gray-900 rounded p-2 m-1 mb-1"
+          >
+            <option value="MPR" selected>MPR</option>
+            <option value="PPD">PPD</option>
+          </select>
 
-      <button
-        type="submit"
-        class="bg-gray-900 text-white py-2 px-4 mt-4 rounded hover:bg-gray-700 text-white"
-      >
-        Comenzar juego
-      </button>
-    </form>
+          <button
+            type="submit"
+            class="bg-gray-900 text-white py-2 px-4 mt-4 rounded hover:bg-gray-700 text-white"
+          >
+            Start game
+          </button>
+        </form>
+      </div>
+    </div>
 
     <main id="game" class="hidden h-screen flex items-center flex-col">
       <h1 class="text-4xl font-bold flex justify-center mt-4">Dart Scoring</h1>
@@ -72,41 +85,188 @@
           <div class="grid grid-cols-7 mt-8 w-80">
             <div class="flex flex-col w-80 justify-center">
               <div class="flex flex-row w-80 justify-center">
-                <div id="point-1" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-r border-gray-300 text-xl hover:bg-gray-700 text-white" value="1">1</div>
-                <div id="point-2" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white" value="2">2</div>
-                <div id="point-3" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white" value="3">3</div>
-                <div id="point-4" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white" value="4">4</div>
-                <div id="point-5" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white" value="5">5</div>
-                <div id="point-6" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white" value="6">6</div>
-                <div id="point-7" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-l border-gray-300 text-xl hover:bg-gray-700 text-white" value="7">7</div>
+                <div
+                  id="point-1"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-r border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="1"
+                >
+                  1
+                </div>
+                <div
+                  id="point-2"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="2"
+                >
+                  2
+                </div>
+                <div
+                  id="point-3"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="3"
+                >
+                  3
+                </div>
+                <div
+                  id="point-4"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="4"
+                >
+                  4
+                </div>
+                <div
+                  id="point-5"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="5"
+                >
+                  5
+                </div>
+                <div
+                  id="point-6"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="6"
+                >
+                  6
+                </div>
+                <div
+                  id="point-7"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-b border-l border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="7"
+                >
+                  7
+                </div>
               </div>
               <div class="flex flex-row justify-center">
-                <div id="point-8" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-r border-gray-300 text-xl hover:bg-gray-700 text-white" value="8">8</div>
-                <div id="point-9" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="9">9</div>
-                <div id="point-10" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="10">10</div>
-                <div id="point-11" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="11">11</div>
-                <div id="point-12" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="12">12</div>
-                <div id="point-13" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="13">13</div>
-                <div id="point-14" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-l border-gray-300 text-xl hover:bg-gray-700 text-white" value="14">14</div>
+                <div
+                  id="point-8"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-r border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="8"
+                >
+                  8
+                </div>
+                <div
+                  id="point-9"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="9"
+                >
+                  9
+                </div>
+                <div
+                  id="point-10"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="10"
+                >
+                  10
+                </div>
+                <div
+                  id="point-11"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="11"
+                >
+                  11
+                </div>
+                <div
+                  id="point-12"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="12"
+                >
+                  12
+                </div>
+                <div
+                  id="point-13"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="13"
+                >
+                  13
+                </div>
+                <div
+                  id="point-14"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-l border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="14"
+                >
+                  14
+                </div>
               </div>
               <div class="flex flex-row justify-center">
-                <div id="point-15" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-r border-gray-300 text-xl hover:bg-gray-700 text-white" value="15">15</div>
-                <div id="point-16" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="16">16</div>
-                <div id="point-17" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="17">17</div>
-                <div id="point-18" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="18">18</div>
-                <div id="point-19" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="19">19</div>
-                <div id="point-20" class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white" value="20">20</div>
-                <div id="point-25" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-l border-gray-300 text-xl hover:bg-gray-700 text-white" value="25">25</div>
+                <div
+                  id="point-15"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-r border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="15"
+                >
+                  15
+                </div>
+                <div
+                  id="point-16"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="16"
+                >
+                  16
+                </div>
+                <div
+                  id="point-17"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="17"
+                >
+                  17
+                </div>
+                <div
+                  id="point-18"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="18"
+                >
+                  18
+                </div>
+                <div
+                  id="point-19"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="19"
+                >
+                  19
+                </div>
+                <div
+                  id="point-20"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="20"
+                >
+                  20
+                </div>
+                <div
+                  id="point-25"
+                  class="bg-gray-900 flex justify-center items-center p-2 w-11 border-y border-l border-gray-300 text-xl hover:bg-gray-700 text-white"
+                  value="25"
+                >
+                  25
+                </div>
               </div>
             </div>
           </div>
         </div>
         <div class="fixed bottom-7 left-0 w-screen flex justify-center">
           <div class="flex flex-row justify-center">
-            <div id="point-0" class="bg-gray-900 flex justify-center items-center p-2 w-11 border-t-2 border-r border-gray-300 text-xl hover:bg-gray-700 text-white" value="0">0</div>
-            <div id="point-double" class="bg-gray-900 flex justify-center items-center p-2 w-[88px] border-t-2 border-x border-gray-300 text-xl hover:bg-gray-700 text-white">DOUBLE</div>
-            <div id="point-triple" class="bg-gray-900 flex justify-center items-center p-2 w-[88px] border-t-2 border-x border-gray-300 text-xl hover:bg-gray-700 text-white">TRIPLE</div>
-            <div id="point-back" class="bg-gray-900 flex justify-center items-center p-2 w-[88px] border-t-2 border-l border-gray-300 text-xl hover:bg-gray-700 text-white">BACK</div>
+            <div
+              id="point-0"
+              class="bg-gray-900 flex justify-center items-center p-2 w-11 border-t-2 border-r border-gray-300 text-xl hover:bg-gray-700 text-white"
+              value="0"
+            >
+              0
+            </div>
+            <div
+              id="point-double"
+              class="bg-gray-900 flex justify-center items-center p-2 w-[88px] border-t-2 border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+            >
+              DOUBLE
+            </div>
+            <div
+              id="point-triple"
+              class="bg-gray-900 flex justify-center items-center p-2 w-[88px] border-t-2 border-x border-gray-300 text-xl hover:bg-gray-700 text-white"
+            >
+              TRIPLE
+            </div>
+            <div
+              id="point-back"
+              class="bg-gray-900 flex justify-center items-center p-2 w-[88px] border-t-2 border-l border-gray-300 text-xl hover:bg-gray-700 text-white"
+            >
+              BACK
+            </div>
           </div>
         </div>
       </div>
