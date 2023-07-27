@@ -48,6 +48,25 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  function gameOver() {
+    let body = document.querySelector("body");
+
+    body.innerHTML = `
+    <div class="flex items-center justify-center mt-8">
+      <div class="flex items-center justify-center flex-col bg-slate-400 w-80 h-[420px] rounded-xl shadow-black shadow-sm">
+        <h1 class="text-4xl font-bold flex justify-center mb-4">Dart Scoring</h1>
+        <h2 class="text-3xl m-3 text-center">${localStorage.getItem("winner")} is the winner!</h2>
+
+        <h3 class="text-2xl font-semibold mb-1 mt-4">Game Stats</h3>
+        <p class="text-xl m-1">${localStorage.getItem("P1Name")}: ${localStorage.getItem("P1Average")}</p>
+        <p class="text-xl m-1">${localStorage.getItem("P2Name")}: ${localStorage.getItem("P2Average")}</p>
+
+        <button class="bg-gray-900 py-2 px-4 mt-4 rounded hover:bg-gray-700 text-white" onclick="location.reload()">Play Again</button>
+      </div>
+    </div>
+    `;
+  }
+
   /* Manejo del boton de back */
   // Iterar sobre los elementos y agregar un controlador de eventos de click
   pointDivs.forEach(function (div) {
@@ -163,7 +182,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dart3-P1").innerText = "--";
           }
 
-          if ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) < 0) {
+          if ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
             let volverP1 = 0;
             currentDartP1.innerText = numeroPulsado * multiplicador;
             
@@ -178,7 +197,21 @@ document.addEventListener("DOMContentLoaded", function () {
             counterP1.innerText = parseInt(counterP1.innerText) + volverP1;
             totalAverageP1.innerText = calcAverage(tiradasP1);
             partialAverageP1.innerText = "Overthrow";
-          } else {
+          } else if(((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador === 2){
+            console.log("Tirooooooooooooooooooooooooooo");
+            counterP1.innerText = currentValueP1 - numeroPulsado * multiplicador;
+            tiradasP1.push(numeroPulsado * multiplicador);
+            currentDartP1.innerText = numeroPulsado * multiplicador;
+            totalAverageP1.innerText = calcAverage(tiradasP1);
+            partialAverageP1.innerText = calcRound("P1");
+            localStorage.setItem("winner", document.getElementById("P2Name").innerText);
+            localStorage.setItem("P1Name", document.getElementById("P1Name").innerText);
+            localStorage.setItem("P2Name", document.getElementById("P2Name").innerText);
+            localStorage.setItem("P1Average", totalAverageP1.innerText);
+            localStorage.setItem("P2Average", totalAverageP2.innerText);
+            gameOver();
+          }
+           else {
 
           if (numeroPulsado !== 25) {
             counterP1.innerText =
@@ -237,7 +270,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dart3-P2").innerText = "--";
           }
 
-          if ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) < 0) {
+          if ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
             let volverP2 = 0;
             currentDartP2.innerText = numeroPulsado * multiplicador;
             
@@ -252,7 +285,21 @@ document.addEventListener("DOMContentLoaded", function () {
             counterP2.innerText = parseInt(counterP2.innerText) + volverP2;
             totalAverageP2.innerText = calcAverage(tiradasP2);
             partialAverageP2.innerText = "Overthrow";
-          } else {
+          } else if(((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador === 2){
+            console.log("Tirooooooooooooooooooooooooooo gana P2");
+            counterP2.innerText = currentValueP2 - numeroPulsado * multiplicador;
+            tiradasP2.push(numeroPulsado * multiplicador);
+            currentDartP2.innerText = numeroPulsado * multiplicador;
+            totalAverageP2.innerText = calcAverage(tiradasP2);
+            partialAverageP2.innerText = calcRound("P2");
+            localStorage.setItem("winner", document.getElementById("P1Name").innerText);
+            localStorage.setItem("P1Name", document.getElementById("P1Name").innerText);
+            localStorage.setItem("P2Name", document.getElementById("P2Name").innerText);
+            localStorage.setItem("P1Average", totalAverageP1.innerText);
+            localStorage.setItem("P2Average", totalAverageP2.innerText);
+            gameOver();
+          }
+           else {
 
           if (numeroPulsado !== 25) {
             counterP2.innerText =
