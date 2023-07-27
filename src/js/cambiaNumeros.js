@@ -162,6 +162,24 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dart2-P1").innerText = "--";
             document.getElementById("dart3-P1").innerText = "--";
           }
+
+          if ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) < 0) {
+            let volverP1 = 0;
+            currentDartP1.innerText = numeroPulsado * multiplicador;
+            
+            while (clicksP1 > 0){
+              volverP1 += tiradasP1[tiradasP1.length - 1]
+              tiradasP1.pop();
+              clicksP1--;
+            }
+            
+            tiradasP1.push(0, 0, 0);
+            currentPlayer = "P2";
+            counterP1.innerText = parseInt(counterP1.innerText) + volverP1;
+            totalAverageP1.innerText = calcAverage(tiradasP1);
+            partialAverageP1.innerText = "Overthrow";
+          } else {
+
           if (numeroPulsado !== 25) {
             counterP1.innerText =
               currentValueP1 - numeroPulsado * multiplicador;
@@ -208,6 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
               }
             }
           }
+        }
         } else if (currentPlayer === "P2") {
           document.getElementById("P2Name").classList.add("font-semibold");
           document.getElementById("P1Name").classList.remove("font-semibold");
@@ -217,6 +236,24 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dart2-P2").innerText = "--";
             document.getElementById("dart3-P2").innerText = "--";
           }
+
+          if ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) < 0) {
+            let volverP2 = 0;
+            currentDartP2.innerText = numeroPulsado * multiplicador;
+            
+            while (clicksP2 > 0){
+              volverP2 += tiradasP2[tiradasP2.length - 1]
+              tiradasP2.pop();
+              clicksP2--;
+            }
+            
+            tiradasP2.push(0, 0, 0);
+            currentPlayer = "P1";
+            counterP2.innerText = parseInt(counterP2.innerText) + volverP2;
+            totalAverageP2.innerText = calcAverage(tiradasP2);
+            partialAverageP2.innerText = "Overthrow";
+          } else {
+
           if (numeroPulsado !== 25) {
             counterP2.innerText =
               currentValueP2 - numeroPulsado * multiplicador;
@@ -264,6 +301,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
           }
         }
+      }
         console.log(numeroPulsado);
       }
     });
