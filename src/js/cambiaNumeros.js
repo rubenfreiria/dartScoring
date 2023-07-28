@@ -246,7 +246,8 @@ document.addEventListener("DOMContentLoaded", function () {
             currentDartP1.innerText = numeroPulsado * multiplicador;
             totalAverageP1.innerText = calcAverage(tiradasP1);
             partialAverageP1.innerText = calcRound("P1");
-            localStorage.setItem("winner", document.getElementById("P2Name").innerText);
+            localStorage.clear();
+            localStorage.setItem("winner", document.getElementById("P1Name").innerText);
             localStorage.setItem("P1Name", document.getElementById("P1Name").innerText);
             localStorage.setItem("P2Name", document.getElementById("P2Name").innerText);
             localStorage.setItem("P1Average", totalAverageP1.innerText);
@@ -334,7 +335,8 @@ document.addEventListener("DOMContentLoaded", function () {
             currentDartP2.innerText = numeroPulsado * multiplicador;
             totalAverageP2.innerText = calcAverage(tiradasP2);
             partialAverageP2.innerText = calcRound("P2");
-            localStorage.setItem("winner", document.getElementById("P1Name").innerText);
+            localStorage.clear();
+            localStorage.setItem("winner", document.getElementById("P2Name").innerText);
             localStorage.setItem("P1Name", document.getElementById("P1Name").innerText);
             localStorage.setItem("P2Name", document.getElementById("P2Name").innerText);
             localStorage.setItem("P1Average", totalAverageP1.innerText);
