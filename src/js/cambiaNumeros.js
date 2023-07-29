@@ -48,6 +48,8 @@ document.addEventListener("DOMContentLoaded", function () {
     }
   }
 
+  /* Funcion que se ejecuta cuando alguno de los dos jugadores
+  llega a 0 puntos dandole a un doble */
   function gameOver() {
     let body = document.querySelector("body");
 
