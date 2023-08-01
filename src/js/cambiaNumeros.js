@@ -75,14 +75,14 @@ document.addEventListener("DOMContentLoaded", function () {
     div.addEventListener("click", function () {
       const especialPulsado = this.textContent.trim();
       if (especialPulsado === "BACK") {
-        console.log(especialPulsado);
+        /* console.log(especialPulsado); */
 
         /* Revisar clicks */
         if (currentPlayer === "P1") {
           /* Manejar que no se pueda volver mas atras que el inicio de la partida para P1 */
           if (tiradasP1.length === 0) {
             currentPlayer = "P1";
-            console.log("No se puede volver mas atras");
+            /* console.log("No se puede volver mas atras"); */
             return;
           }
           if (clicksP1 % 3 === 0 && tiradasP2.length > 0) {
@@ -226,7 +226,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dart3-P1").innerText = "--";
           }
 
-          if ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
+          if ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 1) || ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
             let volverP1 = 0;
             currentDartP1.innerText = numeroPulsado * multiplicador;
             
@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", function () {
             totalAverageP1.innerText = calcAverage(tiradasP1);
             partialAverageP1.innerText = "Overthrow";
           } else if(((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador === 2){
-            console.log("Tirooooooooooooooooooooooooooo");
+            /* console.log("Tirooooooooooooooooooooooooooo"); */
             counterP1.innerText = currentValueP1 - numeroPulsado * multiplicador;
             tiradasP1.push(numeroPulsado * multiplicador);
             currentDartP1.innerText = numeroPulsado * multiplicador;
@@ -266,7 +266,7 @@ document.addEventListener("DOMContentLoaded", function () {
             totalAverageP1.innerText = calcAverage(tiradasP1);
             partialAverageP1.innerText = calcRound("P1");
             multiplicador = 1;
-            console.log(tiradasP1);
+            /* console.log(tiradasP1); */
             clicksP1++;
             if (clicksP1 % 3 === 0) {
               clicksP1 = 0;
@@ -282,7 +282,7 @@ document.addEventListener("DOMContentLoaded", function () {
               totalAverageP1.innerText = calcAverage(tiradasP1);
               partialAverageP1.innerText = calcRound("P1");
               multiplicador = 1;
-              console.log(tiradasP1);
+              /* console.log(tiradasP1); */
               clicksP1++;
               if (clicksP1 % 3 === 0) {
                 clicksP1 = 0;
@@ -296,7 +296,7 @@ document.addEventListener("DOMContentLoaded", function () {
               totalAverageP1.innerText = calcAverage(tiradasP1);
               partialAverageP1.innerText = calcRound("P1");
               multiplicador = 1;
-              console.log(tiradasP1);
+              /* console.log(tiradasP1); */
               clicksP1++;
               if (clicksP1 % 3 === 0) {
                 clicksP1 = 0;
@@ -315,7 +315,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById("dart3-P2").innerText = "--";
           }
 
-          if ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
+          if ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 1) || ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
             let volverP2 = 0;
             currentDartP2.innerText = numeroPulsado * multiplicador;
             
@@ -331,7 +331,7 @@ document.addEventListener("DOMContentLoaded", function () {
             totalAverageP2.innerText = calcAverage(tiradasP2);
             partialAverageP2.innerText = "Overthrow";
           } else if(((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador === 2){
-            console.log("Tirooooooooooooooooooooooooooo gana P2");
+            /* console.log("Tirooooooooooooooooooooooooooo gana P2"); */
             counterP2.innerText = currentValueP2 - numeroPulsado * multiplicador;
             tiradasP2.push(numeroPulsado * multiplicador);
             currentDartP2.innerText = numeroPulsado * multiplicador;
@@ -356,7 +356,7 @@ document.addEventListener("DOMContentLoaded", function () {
             totalAverageP2.innerText = calcAverage(tiradasP2);
             partialAverageP2.innerText = calcRound("P2");
             multiplicador = 1;
-            console.log(tiradasP2);
+            /* console.log(tiradasP2); */
             if (clicksP2 % 3 === 0) {
               clicksP2 = 0;
               currentPlayer = "P1";
@@ -372,7 +372,7 @@ document.addEventListener("DOMContentLoaded", function () {
               totalAverageP2.innerText = calcAverage(tiradasP2);
               partialAverageP2.innerText = calcRound("P2");
               multiplicador = 1;
-              console.log(tiradasP2);
+              /* console.log(tiradasP2); */
               if (clicksP2 % 3 === 0) {
                 clicksP2 = 0;
                 currentPlayer = "P1";
@@ -386,7 +386,7 @@ document.addEventListener("DOMContentLoaded", function () {
               totalAverageP2.innerText = calcAverage(tiradasP2);
               partialAverageP2.innerText = calcRound("P2");
               multiplicador = 1;
-              console.log(tiradasP2);
+              /* console.log(tiradasP2); */
               if (clicksP2 % 3 === 0) {
                 clicksP2 = 0;
                 currentPlayer = "P1";
@@ -395,7 +395,7 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-        console.log(numeroPulsado);
+        /* console.log(numeroPulsado); */
       }
     });
   });
