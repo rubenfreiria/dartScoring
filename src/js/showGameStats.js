@@ -1,5 +1,6 @@
 import { contadorPersonal } from "./contadorPersonal.js";
 
+/* Carga los datos de los jugadores y los muestra */
 export function show(){
     // Mostrar los contadores de cada jugador
     const player1Counter = document.getElementById("player1");
