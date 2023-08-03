@@ -1,3 +1,5 @@
+import {checkout} from "./checkoutHelp.js";
+
 // Esperar a que el DOM esté completamente cargado
 document.addEventListener("DOMContentLoaded", function () {
   // Obtener todos los elementos div con el id que comienza con "point-"
@@ -123,6 +125,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
             totalAverageP2.innerText = calcAverage(tiradasP2);
             partialAverageP2.innerText = calcRound("P2");
+            checkout(document.getElementById("counterP2").innerText);
             return;
           }
           let counterP1 = document.getElementById("counterP1");
@@ -134,6 +137,7 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(`dart${clicksP1 + 1}-P1`).innerText = "--";
             totalAverageP1.innerText = calcAverage(tiradasP1);
             partialAverageP1.innerText = calcRound("P1");
+            checkout(document.getElementById("counterP1").innerText);
         } else if (currentPlayer === "P2") {
           if (clicksP2 % 3 === 0 && tiradasP1.length > 0) {
             if (document.getElementById("partialAverageP1").innerText === "Overthrow") {
@@ -175,6 +179,7 @@ document.addEventListener("DOMContentLoaded", function () {
               clicksP1--;
               totalAverageP1.innerText = calcAverage(tiradasP1);
               partialAverageP1.innerText = calcRound("P1");
+              checkout(document.getElementById("counterP1").innerText);
             return;
           }
           let counterP2 = document.getElementById("counterP2");
@@ -186,7 +191,15 @@ document.addEventListener("DOMContentLoaded", function () {
             document.getElementById(`dart${clicksP2 + 1}-P2`).innerText = "--";
             totalAverageP2.innerText = calcAverage(tiradasP2);
             partialAverageP2.innerText = calcRound("P2");
+            checkout(document.getElementById("counterP2").innerText);
         }
+        /* if (currentPlayer === "P1") {
+          console.log(document.getElementById("counterP1").innerText);
+          checkout(document.getElementById("counterP1").innerText);
+        } else if (currentPlayer === "P2") {
+          console.log(document.getElementById("counterP2").innerText);
+          checkout(document.getElementById("counterP2").innerText);
+        } */
       }
 
       /* Manejo de los multiplicadores */
@@ -218,14 +231,6 @@ document.addEventListener("DOMContentLoaded", function () {
         let currentValueP2 = parseInt(counterP2.innerText);
 
         if (currentPlayer === "P1") {
-          document.getElementById("P1Name").classList.add("font-semibold");
-          document.getElementById("P2Name").classList.remove("font-semibold");
-          if (clicksP1 === 0) {
-            document.getElementById("dart1-P1").innerText = "--";
-            document.getElementById("dart2-P1").innerText = "--";
-            document.getElementById("dart3-P1").innerText = "--";
-          }
-
           if ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 1) || ((parseInt(counterP1.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
             let volverP1 = 0;
             currentDartP1.innerText = numeroPulsado * multiplicador;
@@ -306,15 +311,6 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
         } else if (currentPlayer === "P2") {
-          document.getElementById("P2Name").classList.add("font-semibold");
-          document.getElementById("P1Name").classList.remove("font-semibold");
-
-          if (clicksP2 === 0) {
-            document.getElementById("dart1-P2").innerText = "--";
-            document.getElementById("dart2-P2").innerText = "--";
-            document.getElementById("dart3-P2").innerText = "--";
-          }
-
           if ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) < 0 || ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 1) || ((parseInt(counterP2.innerText) - (numeroPulsado * multiplicador)) === 0) && multiplicador !== 2) {
             let volverP2 = 0;
             currentDartP2.innerText = numeroPulsado * multiplicador;
@@ -395,7 +391,29 @@ document.addEventListener("DOMContentLoaded", function () {
           }
         }
       }
-        /* console.log(numeroPulsado); */
+        if (currentPlayer === "P1") {
+          if(document.getElementById("P1Name") !== null){
+          document.getElementById("P1Name").classList.add("font-semibold");
+          document.getElementById("P2Name").classList.remove("font-semibold");
+          if (clicksP1 === 0) {
+            document.getElementById("dart1-P1").innerText = "--";
+            document.getElementById("dart2-P1").innerText = "--";
+            document.getElementById("dart3-P1").innerText = "--";
+          }
+          checkout(counterP1.innerText);
+          }
+        } else if (currentPlayer === "P2") {
+          if(document.getElementById("P2Name") !== null){
+          document.getElementById("P2Name").classList.add("font-semibold");
+          document.getElementById("P1Name").classList.remove("font-semibold");
+          if (clicksP2 === 0) {
+            document.getElementById("dart1-P2").innerText = "--";
+            document.getElementById("dart2-P2").innerText = "--";
+            document.getElementById("dart3-P2").innerText = "--";
+          }
+          checkout(counterP2.innerText);
+          }
+        }
       }
     });
   });
